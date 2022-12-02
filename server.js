@@ -12,3 +12,5 @@ console.log("Server live in port: 3000");
 server.listen(3000);
 
 // node server.js
+
+// npm install express
