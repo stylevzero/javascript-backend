@@ -12,7 +12,10 @@ let db = new sqlite3.Database('proyecto-backend');;
 //db.run('CREATE TABLE tasks(id int AUTO_INCREMENT, description varchar(255))');
 
 app.post('/pendientes', function(req, res) {
-    db.run("INSERT INTO tasks(descripcion) VALUES('Hello World')");
+    //db.run(`INSERT INTO tasks(description) VALUES('${req.body.description}')`);
+    
+    // Sanitizar valores enviados
+    db.run(`INSERT INTO tasks(description) VALUES(?)`, req.body.description);
     res.send('Inserción finalizada');
 });
 
