@@ -1,0 +1,9 @@
+
+// Comando para genrar el modelo desde sequelize
+sequelize model:generate --name Task --atributes descripcion:text
+
+// Comando para ver las migraciones
+sequelize db:migrate
+
+// Revertir una migraciones
+sequelize db:migrate:undo
