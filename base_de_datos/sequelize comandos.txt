@@ -7,3 +7,6 @@ sequelize db:migrate
 
 // Revertir una migraciones
 sequelize db:migrate:undo
+
+// Insertar datos en modo de desarrollo
+sequelize seed:generate --name generate_tasks

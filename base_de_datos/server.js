@@ -22,6 +22,8 @@ new sequelize -> 1er argumento -> Base de datos
 // Creamos la base de datos
 //db.run('CREATE TABLE tasks(id int AUTO_INCREMENT, description varchar(255))');
 
+app.use('view engine', 'pug');
+
 app.post('/pendientes', function(req, res) {
     //db.run(`INSERT INTO tasks(description) VALUES('${req.body.description}')`);
     
