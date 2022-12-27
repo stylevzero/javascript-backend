@@ -12,6 +12,12 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
+    await queryInterface.bulkInsert('tasks', [
+      {id: 1, descripcion: "Modificar archivo de backend", createdAt: new Date(), updatedAt: new Date()},
+      {id: 2, descripcion: "actualizar archivo de backend", createdAt: new Date(), updatedAt: new Date()},
+      {id: 3, descripcion: "Commitear cambios del backend", createdAt: new Date(), updatedAt: new Date()}
+    ], {});
+
   },
 
   async down (queryInterface, Sequelize) {
@@ -20,6 +26,8 @@ module.exports = {
      *
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
+     * 
      */
+    await queryInterface.bulkDelete('tasks', null, {});
   }
 };

@@ -40,3 +40,12 @@ process.on('SIGINT', function(){
     db.close();
     process.exit();
 })
+
+
+/* 
+Comando para generar el archivo Seeders con los métodos Up y down
+sequelize seed:generate --name generate_tasks
+
+Ejecutar el seeder
+sequelize db:seed:all
+*/
