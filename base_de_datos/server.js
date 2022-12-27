@@ -5,7 +5,9 @@ const Sequelize = require('sequelize');
 
 const app = express();
 
-const tasks = require('./controllers/tasks');
+const tasksRoutes = require('./routes/tasks_routes');
+
+//const tasks = require('./controllers/tasks');
 
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -26,8 +28,10 @@ new sequelize -> 1er argumento -> Base de datos
 
 app.set('view engine', 'pug');
 
-app.get('/tasks', tasks.home);
+app.use(tasksRoutes);
+//app.get('/tasks', tasks.home);
 
+/*
 app.post('/pendientes', function(req, res) {
     //db.run(`INSERT INTO tasks(description) VALUES('${req.body.description}')`);
     
@@ -35,6 +39,7 @@ app.post('/pendientes', function(req, res) {
     db.run(`INSERT INTO tasks(description) VALUES(?)`, req.body.description);
     res.send('Inserción finalizada');
 });
+*/
 
 app.listen(3000);
 
