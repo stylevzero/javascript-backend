@@ -3,20 +3,12 @@ let TasksController = require('../controllers/tasks');
 
 let router = express.Router();
 
-
 // GET y POST de tasks
-router.route('/tasks').get(TasksController.index)
-.post(TasksController.create);
+router.route('/tasks').get(TasksController.index).post(TasksController.create);
 
 // Usamos Get -> mostramos solo una vista
 router.get('/tasks/new', TasksController.new);
 
-/* 
-router.route('/tasks').get(function(req, res){
-    res.send('Hello desde una subruta');
-}).post(function(req, res){
-
-});
-*/
+router.route('/tasks/:id').get(TasksController.show);
 
 module.exports = router;

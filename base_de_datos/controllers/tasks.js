@@ -7,6 +7,17 @@ module.exports = {
             res.render('tasks/index', { tasks: tasks})
         })
     },
+    show: function(req, res){
+        //res.send(req.params)
+        
+        // Method findById is deprecated, replace findByPk
+        //Task.findById(req.params.id).then(function(task){
+        Task.findByPk(req.params.id).then(function(task){
+            //res.json(task);
+            res.render('tasks/show', {task: task});
+            //res.render('tasks/show', {task}); // Shorthand Properties
+        })
+    },
     create: function(req, res){
         Task.create({
             descripcion: req.body.descripcion
