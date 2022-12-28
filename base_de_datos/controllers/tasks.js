@@ -28,6 +28,16 @@ module.exports = {
             res.json(err);
         })
     },
+    update: function(req, res){
+        Task.update({descripcion: req.body.descripcion},{
+            where: {
+                id: req.params.id
+            }
+        }).then(function(response){
+            res.json(response);
+            //res.redirect('/tasks/'+req.params.id);
+        })
+    },
     new: function(req, res){
         res.render('tasks/new');
     }
