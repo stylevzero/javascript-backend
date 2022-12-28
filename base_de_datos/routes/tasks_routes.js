@@ -9,13 +9,15 @@ router.route('/tasks').get(function(req, res){
     res.send('Hello desde una subruta');
 }).post(TasksController.create);
 
+// Usamos Get -> mostramos solo una vista
+router.get('/tasks/new', TasksController.new);
+
 /* 
 router.route('/tasks').get(function(req, res){
     res.send('Hello desde una subruta');
 }).post(function(req, res){
 
 });
-
 */
 
 module.exports = router;
