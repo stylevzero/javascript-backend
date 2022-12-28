@@ -5,9 +5,8 @@ let router = express.Router();
 
 
 // GET y POST de tasks
-router.route('/tasks').get(function(req, res){
-    res.send('Hello desde una subruta');
-}).post(TasksController.create);
+router.route('/tasks').get(TasksController.index)
+.post(TasksController.create);
 
 // Usamos Get -> mostramos solo una vista
 router.get('/tasks/new', TasksController.new);
