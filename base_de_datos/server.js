@@ -2,6 +2,7 @@ const express = require('express');
 const sqlite3 = require('sqlite3');
 const bodyParser = require('body-parser');
 const Sequelize = require('sequelize');
+const methodOverride = require('method-override');
 
 const app = express();
 
@@ -9,7 +10,9 @@ const tasksRoutes = require('./routes/tasks_routes');
 
 //const tasks = require('./controllers/tasks');
 
+//Middleware
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(methodOverride('_method'));
 
 //let db = new sqlite3.Database('proyecto-backend');;
 const sequelize = new Sequelize('proyecto-backend', null, null, {
@@ -40,6 +43,9 @@ app.post('/pendientes', function(req, res) {
     res.send('Inserción finalizada');
 });
 */
+
+//6'18
+// POST http://localhost:3000/tasks/2?_method=PUT
 
 app.listen(3000);
 
