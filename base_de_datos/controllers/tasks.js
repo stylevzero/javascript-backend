@@ -11,7 +11,7 @@ module.exports = {
         //res.send(req.params)
         
         // Method findById is deprecated, replace findByPk
-        //Task.findById(req.params.id).then(function(task){
+        // Task.findById(req.params.id).then(function(task){
         Task.findByPk(req.params.id).then(function(task){
             //res.json(task);
             res.render('tasks/show', {task: task});
@@ -22,6 +22,15 @@ module.exports = {
         Task.findByPk(req.params.id).then(function(task){
             //res.json(task);
             res.render('tasks/edit', {task: task});
+        })
+    },
+    destroy: function(req, res){
+        Task.destroy({
+            where: {
+                id: req.params.id
+            }
+        }).then(function(contadorElementosEliminados){
+            res.redirect('/tasks');
         })
     },
     create: function(req, res){
@@ -48,12 +57,4 @@ module.exports = {
         res.render('tasks/new');
     }
 
-    /*
-    home: function(req, res) {
-
-        Task.findAll().then(function(tasks){
-            res.render('tasks/index', {tasks: tasks});
-        });
-    }
-*/
 };

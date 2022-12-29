@@ -7,6 +7,7 @@ const methodOverride = require('method-override');
 const app = express();
 
 const tasksRoutes = require('./routes/tasks_routes');
+const registrationsRoutes = require('./routes/registrations_routes');
 
 //const tasks = require('./controllers/tasks');
 
@@ -32,6 +33,8 @@ new sequelize -> 1er argumento -> Base de datos
 app.set('view engine', 'pug');
 
 app.use(tasksRoutes);
+app.use(registrationsRoutes);
+
 //app.get('/tasks', tasks.home);
 
 /*
