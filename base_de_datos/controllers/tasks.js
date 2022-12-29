@@ -18,6 +18,12 @@ module.exports = {
             //res.render('tasks/show', {task}); // Shorthand Properties
         })
     },
+    edit: function(req, res){
+        Task.findByPk(req.params.id).then(function(task){
+            //res.json(task);
+            res.render('tasks/edit', {task: task});
+        })
+    },
     create: function(req, res){
         Task.create({
             descripcion: req.body.descripcion
