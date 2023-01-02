@@ -5,3 +5,4 @@ npm install sequelize
 npm install -g sequelize-cli
 npm install pug
 npm install method-override
+npm install bcrypt
