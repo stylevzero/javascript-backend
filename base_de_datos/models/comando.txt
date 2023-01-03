@@ -1,2 +1,2 @@
- sequelize model:generate --name User --attributes email:string,password_hash:string
+ sequelize model:generate --name User --attributes email:string,password:string
  sequelize db:migrate

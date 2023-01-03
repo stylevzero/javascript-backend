@@ -1,7 +1,6 @@
 'use strict'; // Hooks
 const { Model } = require('sequelize');
 const bcrypt = require('bcrypt');
-const e = require('express');
 
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
@@ -13,15 +12,17 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
-    static beforeCreate(user, options) { //Función que se ejecuta antesd e una modifación en la tabla
+    static beforeCreate(user, options) { //Función que se ejecuta antes de una modifación en la tabla
       //password enviado, nro de rondas, función que se ejecutará después de que las rondas se hallan ejecutado
       
       return new Promise((res, rej) => {
 
         if(user.password){
-          bcrypt.hash(user.password, 10, function(error,hash){
-            user.password_hash = hash;
-          });  
+          bcrypt.hash(user.password_hash, 10, function(error,hash){
+            user.password_tmp = hash;
+            debugger;
+            res();
+          })
         };
   
       });
@@ -34,8 +35,12 @@ module.exports = (sequelize, DataTypes) => {
       unique: true,
       allowNull: false
     },
-    password_hash: DataTypes.STRING,
-    password: DataTypes.VIRTUAL
+    password_hash: { 
+      type: DataTypes.STRING,
+      },
+    password_tmp: {
+      type: DataTypes.VIRTUAL
+      },
   }, {
     sequelize,
     modelName: 'User',
