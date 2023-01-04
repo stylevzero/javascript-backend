@@ -18,9 +18,9 @@ module.exports = (sequelize, DataTypes) => {
       return new Promise((res, rej) => {
 
         if(user.password){
-          bcrypt.hash(user.password_hash, 10, function(error,hash){
-            user.password_tmp = hash;
-            debugger;
+          bcrypt.hash(user.password, 10, function(error,hash){
+          //bcrypt.hash(user.password_hash, 10, function(error,hash){
+            user.password_hash = hash;
             res();
           })
         };
@@ -38,9 +38,9 @@ module.exports = (sequelize, DataTypes) => {
     password_hash: { 
       type: DataTypes.STRING,
       },
-    password_tmp: {
+    password: {
       type: DataTypes.VIRTUAL
-      },
+      }
   }, {
     sequelize,
     modelName: 'User',

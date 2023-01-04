@@ -7,9 +7,9 @@ module.exports = {
     create: function(req, res){
         let data = {
             email: req.body.email,
-            password_hash: req.body.password
+            password: req.body.password
+            //password_hash: req.body.password
         };
-        console.log("data: " + data);
         User.create(data).then(result => {
             res.json(result);
         }).catch(err => {
