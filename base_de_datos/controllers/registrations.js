@@ -1,14 +1,15 @@
 const User = require('../models').User;
+const bcrypt = require('bcrypt');
 
 module.exports = {
     new: function(req, res){
         res.render('registrations/new');
     },
     create: function(req, res){
+
         let data = {
             email: req.body.email,
-            password: req.body.password
-            //password_hash: req.body.password
+            password_hash: req.body.password
         };
         User.create(data).then(result => {
             res.json(result);
